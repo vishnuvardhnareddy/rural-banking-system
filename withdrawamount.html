@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdraw Form</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external stylesheet -->
+    <style>
+        /* Inline styling for demonstration; move to styles.css if preferred */
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-container label {
+            display: block;
+            margin: 12px 0 6px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .form-container input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .form-container p {
+            color: #777;
+            font-size: 0.9em;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h2>Withdrawal Form</h2>
+        <form id="withdrawForm" onsubmit="submitWithdrawForm(); return false;">
+            <label for="mobileNumber">Mobile Number</label>
+            <input type="text" id="mobileNumber" name="mobileNumber" required>
+
+            <label for="accountantName">Accountant Name</label>
+            <input type="text" id="accountantName" name="accountantName" required>
+
+            <label for="accountNumber">Account Number</label>
+            <input type="text" id="accountNumber" name="accountNumber" required>
+
+            <label for="withdrawAmount">Withdrawal Amount</label>
+            <input type="number" id="withdrawAmount" name="withdrawAmount" min="500" max="100000" required>
+
+            <input type="submit" value="Withdraw">
+            <p>Amount limit: 500 to 100,000</p>
+        </form>
+    </div>
+
+    <script>
+        // script.js
+        function submitWithdrawForm() {
+    const mobileNumber = document.getElementById('mobileNumber').value;
+    const accountantName = document.getElementById('accountantName').value;
+    const accountNumber = document.getElementById('accountNumber').value;
+    const withdrawAmount = parseFloat(document.getElementById('withdrawAmount').value);
+
+    fetch('http://localhost:3000/api/withdraw', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            mobileNumber,
+            accountantName,
+            accountNumber,
+            withdrawAmount
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message); // Show success or insufficient balance message
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+
+    </script> <!-- Link to external script file -->
+</body>
+
+</html>

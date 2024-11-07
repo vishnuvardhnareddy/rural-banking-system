@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 40px;
+            background-color: #007BFF;
+            /* Blue color */
+            padding: 10px 20px;
+            color: white;
+            width: 1300px;
+            border-radius: 10px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo span {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        /* Navigation links */
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .nav-links a:hover {
+            color: #f1f1f1;
+            /* Lighter color on hover */
+        }
+
+        /* Responsive (optional) */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                /* Hide navigation on small screens */
+            }
+        }
+
+        .container {
+            width: 1300px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .content {
+            margin: 20px 0;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .content h3 {
+            color: #007BFF;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- About Section -->
+    <header>
+        <nav class="navbar">
+            <!-- Bank Logo -->
+            <div class="logo">
+                <img src="./logo2.jpg" alt="logo">
+                <span>Rural Banking</span>
+            </div>
+            <!-- Navigation Links -->
+            <ul class="nav-links">
+                <li><a href="./home.html">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./feedback.html">Feedbacks</a></li>
+                <li><a href="#">My HistoryBanks</a></li>
+                <li><a href="./login.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h2>About the Rural Banking System</h2>
+        <div class="content">
+            <h3>Overview</h3>
+            <p>The Rural Banking System is a digital banking application designed to provide banking services to rural
+                communities. Our goal is to make banking accessible, efficient, and user-friendly, empowering
+                individuals and small businesses in rural areas.</p>
+
+            <h3>Features</h3>
+            <ul>
+                <li><strong>Account Management:</strong> Manage your banking accounts with ease, including checking
+                    balances, deposits, and withdrawals.</li>
+                <li><strong>Loan Services:</strong> Apply for personal loans, agricultural loans, seasonal loans, and
+                    specialized loans for women and youth.</li>
+                <li><strong>Feedback System:</strong> Share your experiences and suggestions to help us improve our
+                    services.</li>
+                <li><strong>User-Friendly Interface:</strong> Our intuitive interface makes it easy for users of all
+                    ages to navigate and utilize banking services.</li>
+            </ul>
+
+            <h3>Why Choose Us?</h3>
+            <p>We understand the unique challenges faced by rural communities. Our application aims to bridge the gap
+                between traditional banking and the needs of rural customers. With secure transactions, personalized
+                loan options, and an emphasis on community engagement, we strive to enhance the financial well-being of
+                our users.</p>
+
+            <h3>Join Us</h3>
+            <p>Become a part of the Rural Banking System and experience modern banking at your fingertips. Together, we
+                can build a financially empowered rural community!</p>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Rural Banking System. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

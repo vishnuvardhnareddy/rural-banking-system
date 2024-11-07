@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Feedbacks</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <!-- Bank Logo -->
+        <div class="logo">
+            <img src="./logo2.jpg" alt="logo">
+            <span>Rural Banking</span>
+        </div>
+        <!-- Navigation Links -->
+        <ul class="nav-links">
+            <li><a href="./home.html">Home</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./feedback.html">Feedbacks</a></li>
+            <li><a href="#">My HistoryBanks</a></li>
+            <li><a href="./login.html">Logout</a></li>
+        </ul>
+    </nav>
+    <section class="feedback-list">
+        <h2>All Feedbacks</h2>
+        <div id="feedbackContainer"></div>
+    </section>
+
+    <script>
+        // Get the feedback data from localStorage
+        const feedbackArray = JSON.parse(localStorage.getItem('feedbackData')) || [];
+
+        // Select the feedback container
+        const feedbackContainer = document.getElementById('feedbackContainer');
+
+        // Display each feedback
+        feedbackArray.forEach(feedback => {
+            const feedbackElement = document.createElement('div');
+            feedbackElement.classList.add('feedback-item');
+
+            feedbackElement.innerHTML = `
+                <h3>${feedback.name}</h3>
+                <p><strong>Email:</strong> ${feedback.email}</p>
+                <p><strong>Mobile:</strong> ${feedback.mobile}</p>
+                <p><strong>Message:</strong> ${feedback.message}</p>
+                <hr>
+            `;
+
+            feedbackContainer.appendChild(feedbackElement);
+        });
+    </script>
+</body>
+</html>

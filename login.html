@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Signup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        .form-container {
+            width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .form-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .form-container p {
+            margin-top: 15px;
+        }
+
+        .form-container a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2 id="form-title">User Login</h2>
+        
+        <!-- User Login Form -->
+        <form id="user-login-form">
+            <input type="tel" id="user-login-mobile" placeholder="Mobile Number" required>
+            <input type="password" id="user-login-password" placeholder="Password" required>
+            <button type="submit">User Login</button>
+        </form>
+
+        <!-- User Signup Form -->
+        <form id="user-signup-form" class="hidden">
+            <input type="text" id="user-signup-name" placeholder="Name" required>
+            <input type="tel" id="user-signup-mobile" placeholder="Mobile Number" required>
+            <input type="email" id="user-signup-email" placeholder="Email" required>
+            <input type="text" id="user-signup-pan" placeholder="PAN Number" required>
+            <input type="password" id="user-signup-password" placeholder="Password" required>
+            <button type="submit">User Sign Up</button>
+        </form>
+
+        <!-- Admin Login Form -->
+        <form id="admin-login-form" class="hidden">
+            <input type="tel" id="admin-login-mobile" placeholder="Mobile Number" required>
+            <input type="password" id="admin-login-password" placeholder="Password" required>
+            <button type="submit">Admin Login</button>
+        </form>
+
+        <!-- Admin Signup Form -->
+        <form id="admin-signup-form" class="hidden">
+            <input type="text" id="admin-signup-name" placeholder="Name" required>
+            <input type="tel" id="admin-signup-mobile" placeholder="Mobile Number" required>
+            <input type="email" id="admin-signup-email" placeholder="Email" required>
+            <input type="password" id="admin-signup-password" placeholder="Password" required>
+            <button type="submit">Admin Sign Up</button>
+        </form>
+
+        <p id="toggle-text">Switch to <a href="#" id="toggle-form">Admin</a> login/signup.</p>
+    </div>
+
+    <script>
+        // Retrieve data from localStorage
+        let userArray = JSON.parse(localStorage.getItem('userArray')) || [];
+        let adminArray = JSON.parse(localStorage.getItem('adminArray')) || [];
+
+        // Get elements from the DOM
+        const userLoginForm = document.getElementById('user-login-form');
+        const userSignupForm = document.getElementById('user-signup-form');
+        const adminLoginForm = document.getElementById('admin-login-form');
+        const adminSignupForm = document.getElementById('admin-signup-form');
+        const toggleText = document.getElementById('toggle-text');
+        const formTitle = document.getElementById('form-title');
+        
+        let isAdmin = false;
+
+        // Toggle between User and Admin forms
+        toggleText.addEventListener('click', (event) => {
+            event.preventDefault();
+            isAdmin = !isAdmin;
+            updateForm();
+        });
+
+        function updateForm() {
+            if (isAdmin) {
+                userLoginForm.classList.add('hidden');
+                userSignupForm.classList.add('hidden');
+                adminLoginForm.classList.remove('hidden');
+                adminSignupForm.classList.remove('hidden');
+                formTitle.innerText = 'Admin Login';
+                toggleText.innerHTML = 'Switch to <a href="#" id="toggle-form">User</a> login/signup.';
+            } else {
+                adminLoginForm.classList.add('hidden');
+                adminSignupForm.classList.add('hidden');
+                userLoginForm.classList.remove('hidden');
+                userSignupForm.classList.remove('hidden');
+                formTitle.innerText = 'User Login';
+                toggleText.innerHTML = 'Switch to <a href="#" id="toggle-form">Admin</a> login/signup.';
+            }
+        }
+
+        // Handle User Signup
+        userSignupForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const name = document.getElementById('user-signup-name').value;
+            const mobile = document.getElementById('user-signup-mobile').value;
+            const email = document.getElementById('user-signup-email').value;
+            const pan = document.getElementById('user-signup-pan').value;
+            const password = document.getElementById('user-signup-password').value;
+
+            // Store user data in the array and localStorage
+            const userData = { name, mobile, email, pan, password };
+            userArray.push(userData);
+            localStorage.setItem('userArray', JSON.stringify(userArray)); // Save user data in localStorage
+            console.log('User Data:', userArray); // Log the user data array for verification
+
+            alert('User signup successful! You can now log in.');
+            updateForm(); // Switch to the login form
+        });
+
+        // Handle User Login
+        userLoginForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const mobile = document.getElementById('user-login-mobile').value;
+            const password = document.getElementById('user-login-password').value;
+
+            // Check if user exists in the array
+            const user = userArray.find(user => user.mobile === mobile && user.password === password);
+
+            if (user) {
+                alert('User login successful! Redirecting to homepage...');
+                window.location.href = 'home.html'; // Replace with actual user homepage
+            } else {
+                alert('Invalid mobile number or password. Please try again.');
+            }
+        });
+
+        // Handle Admin Signup
+        adminSignupForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const name = document.getElementById('admin-signup-name').value;
+            const mobile = document.getElementById('admin-signup-mobile').value;
+            const email = document.getElementById('admin-signup-email').value;
+            const password = document.getElementById('admin-signup-password').value;
+
+            // Store admin data in the array and localStorage
+            const adminData = { name, mobile, email, password };
+            adminArray.push(adminData);
+            localStorage.setItem('adminArray', JSON.stringify(adminArray)); // Save admin data in localStorage
+            console.log('Admin Data:', adminArray); // Log the admin data array for verification
+
+            alert('Admin signup successful! You can now log in.');
+            updateForm(); // Switch to the login form
+        });
+
+        // Handle Admin Login
+        adminLoginForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const mobile = document.getElementById('admin-login-mobile').value;
+            const password = document.getElementById('admin-login-password').value;
+
+            // Check if admin exists in the array
+            const admin = adminArray.find(admin => admin.mobile === mobile && admin.password === password);
+
+            if (admin) {
+                alert('Admin login successful! Redirecting to admin dashboard...');
+                window.location.href = 'admin-home.html'; // Replace with actual admin homepage
+            } else {
+                alert('Invalid mobile number or password. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rural Banking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <!-- Bank Logo -->
+            <div class="logo">
+                <img src="./logo2.jpg" alt="logo">
+                <span>Rural Banking</span>
+            </div>
+            <!-- Navigation Links -->
+            <ul class="nav-links">
+                <li><a href="./home.html">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./feedback.html">Feedbacks</a></li>
+                <li><a href="#">My HistoryBanks</a></li>
+                <li><a href="./login.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="banner">
+        <div class="banner-slide">
+            <img src="./bannerimages/image3.jpg" alt="Banking Services in Rural Areas">
+        </div>
+        <div class="banner-slide">
+            <img src="./bannerimages/image4.jpg" alt="Financial Solutions for Farmers">
+        </div>
+        <div class="banner-slide">
+            <img src="./bannerimages/image5.jpg" alt="Technology in Rural Banking">
+        </div>
+        <div class="banner-slide">
+            <img src="./bannerimages/image4.jpg" alt="Community Banking">
+        </div>
+    </div>
+    
+    <section class="content">
+        <div class="card-container">
+            <!-- Card for Deposit -->
+            <div class="card">
+                <img src="./card images/deposit.webp" alt="Deposit">
+                <a href="depositform.html">
+                    <button>deposit</button>
+                </a>
+            </div>
+
+            <!-- Card for Balance Inquiry -->
+            <div class="card">
+                <img src="./card images/avalable bal.webp" alt="Balance Enquiry">
+                <a href="balanceenquiry.html">
+                    <button>Enquiry</button>
+                </a>
+            </div>
+
+            <!-- Card for Withdraw -->
+            <div class="card">
+                <img src="./card images/wuthdraw.webp" alt="Withdraw">
+                <a href="./withdrawamount.html">
+                    <button>WithdrawAmount</button>
+                </a>
+            </div>
+
+            <!-- Card for Personal Loan -->
+            <div class="card">
+                <img src="./card images/personalloan.webp" alt="Personal Loan">
+                <a href="persnolloan.html">
+                    <button>personalLoan</button>
+                </a>
+            </div>
+
+            <!-- Card for Agricultural Loan -->
+            <div class="card">
+                <img src="./card images/agricultural loan.webp" alt="Agricultural Loan">
+                <a href="agriculturalloan.html">
+                    <button>agriculturalLoan</button>
+                </a>
+            </div>
+
+            <!-- Card for Seasonal Loan -->
+            
+
+            <!-- Card for Women & Youth Loans -->
+            <div class="card">
+                <img src="./card images/women and youth.webp" alt="Women & Youth Loans">
+                <button onclick="openFormPage('womenandyouthloanform.html')">Women & Youth Loans</button>
+            </div>
+        </div>
+    </section>
+    <section class="feedback-section">
+        <h2>Feedback</h2>
+        <form class="feedback-form" id="feedbackForm">
+            <!-- Name Field -->
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+            </div>
+
+            <!-- Email Field -->
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+            </div>
+
+            <!-- Mobile Number Field -->
+            <div class="form-group">
+                <label for="mobile">Mobile</label>
+                <input type="tel" id="mobile" name="mobile" placeholder="Your Mobile Number" required>
+            </div>
+
+            <!-- Message Field -->
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </section>
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- About Rural Banking System -->
+            <div class="footer-section about">
+                <h3>Rural Banking System</h3>
+                <p>Providing financial services tailored to the needs of rural communities. We offer a range of services
+                    including deposits, loans, and more to help support local growth and development.</p>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="footer-section contact">
+                <h3>Contact Us</h3>
+                <p>Email: mru@ruralbanking.com</p>
+                <p>Phone: +91 234 567 8907</p>
+                <p>Address: 123 Rural Bank Street, Village, Country</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="./about.html">About Us</a></li>
+                    <li><a href="#">Feedback</a></li>
+                    <li><a href="#">My Banks</a></li>
+                    <li><a href="./login.html">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Rural Banking System | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="./page.js">
+           
+        function openFormPage(page) {
+            // Opens the specified page in a new tab
+            window.open(page, '_blank');
+        }
+    
+    </script>
+
+
+</body>
+
+</html>
